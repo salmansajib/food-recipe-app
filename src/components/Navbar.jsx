@@ -13,15 +13,22 @@ function Navbar() {
       <h2 className=' text-2xl font-semibold '>
         <NavLink to={'/'}>FoodRecipe</NavLink>
       </h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className=' flex  gap-3 '>
         <input
           type='text'
           name='search'
           value={searchParam}
           onChange={(e) => setSearchParam(e.target.value)}
           placeholder='Enter Items...'
-          className=' bg-white/75 p-3 px-8 rounded-full outline-none lg:w-96 shadow-lg shadow-red-100 focus:shadow-red-200 '
+          className=' bg-gray-800 p-3 px-8 rounded-full  lg:w-96 shadow-lg text-gray-50  '
         />
+        <button
+          type='submit'
+          onClick={handleSubmit}
+          className=' bg-gray-800 text-gray-50 px-8 py-3 rounded-full hover:text-white transition '
+        >
+          Search
+        </button>
       </form>
       <ul className=' flex gap-5 '>
         <li>
