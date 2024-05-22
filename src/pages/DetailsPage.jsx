@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-key */
 import { useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { GlobalContext } from '../context';
@@ -47,23 +46,22 @@ function DetailsPage() {
           {receipeDetailsData?.title}
         </h3>
         <div>
-          <button className=' p-3 px-8 rounded-lg text-sm uppercase font-medium tracking-wider mt-3 inline-block bg-gray-900 text-white '>
+          <button className=' p-3 px-8 rounded-lg text-sm  font-medium capitalize tracking-wider mt-1 inline-block bg-gray-900 text-gray-50 cursor-pointer '>
             Save as favorites
           </button>
         </div>
         <div>
-          <span className=' text-2xl font-semibold text-black '>
+          <span className=' text-2xl font-semibold text-gray-900 '>
             Ingredients:
           </span>
-          <ul className=' flex flex-col gap-3  '>
-            {receipeDetailsData?.ingredients.map((ingredient) => (
-              <li>
-                <span className=' text-xl font-semibold text-gray-700 '>
+          <ul className=' flex flex-col gap-3 list-inside list-disc mt-3 '>
+            {receipeDetailsData?.ingredients.map((ingredient, index) => (
+              <li key={index}>
+                <span className=' text-lg font-medium text-gray-800 '>
                   {ingredient.quantity} {ingredient.unit}
                 </span>
-                <span className=' text-xl font-semibold text-gray-700 '>
-                  {' '}
-                  {ingredient.description}{' '}
+                <span className=' text-lg font-medium text-gray-800 '>
+                  {ingredient.description}
                 </span>
               </li>
             ))}

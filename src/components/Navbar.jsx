@@ -13,7 +13,10 @@ function Navbar() {
       <h2 className=' text-2xl font-semibold '>
         <NavLink to={'/'}>FoodRecipe</NavLink>
       </h2>
-      <form onSubmit={handleSubmit} className=' flex  gap-3 '>
+      <form
+        onSubmit={handleSubmit}
+        className=' flex flex-wrap items-center justify-center  gap-3 '
+      >
         <input
           type='text'
           name='search'

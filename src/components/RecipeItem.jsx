@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Link } from 'react-router-dom';
 
 function RecipeItem({ item }) {
@@ -21,8 +22,7 @@ function RecipeItem({ item }) {
           to={`/recipe-item/${item?.id}`}
           className=' text-sm mt-5 p-3 px-8 rounded-lg uppercase font-medium tracking-wider inline-block shadow-md bg-black text-white '
         >
-          {' '}
-          Recipe Details{' '}
+          Recipe Details
         </Link>
       </div>
     </div>
