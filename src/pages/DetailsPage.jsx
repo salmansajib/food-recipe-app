@@ -4,8 +4,12 @@ import { GlobalContext } from '../context';
 
 function DetailsPage() {
   const { id } = useParams();
-  const { receipeDetailsData, setReceipeDetailsData } =
-    useContext(GlobalContext);
+  const {
+    receipeDetailsData,
+    setReceipeDetailsData,
+    handleAddToFavorite,
+    favoritesList,
+  } = useContext(GlobalContext);
 
   // console.log(params);
 
@@ -46,8 +50,17 @@ function DetailsPage() {
           {receipeDetailsData?.title}
         </h3>
         <div>
-          <button className=' p-3 px-8 rounded-lg text-sm  font-medium capitalize tracking-wider mt-1 inline-block bg-gray-900 text-gray-50 cursor-pointer '>
-            Save as favorites
+          <button
+            onClick={() => handleAddToFavorite(receipeDetailsData)}
+            className=' p-3 px-8 rounded-lg text-sm  font-medium capitalize tracking-wider mt-1 inline-block bg-gray-900 text-gray-50 cursor-pointer '
+          >
+            {favoritesList &&
+            favoritesList.length > 0 &&
+            favoritesList.findIndex(
+              (item) => item.id === receipeDetailsData?.id
+            ) !== -1
+              ? 'Remove from favorites'
+              : 'Add to favorites'}
           </button>
         </div>
         <div>
