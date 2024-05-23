@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export const GlobalContext = createContext(null);
@@ -8,7 +8,7 @@ export default function GlobalState({ children }) {
   const [searchParam, setSearchParam] = useState('');
   const [loading, setLoading] = useState(false);
   const [recipeList, setRecipeList] = useState([]);
-  const [receipeDetailsData, setReceipeDetailsData] = useState(null);
+  const [recipeDetailData, setRecipeDetailData] = useState(null);
   const [favoritesList, setFavoritesList] = useState([]);
 
   const navigate = useNavigate();
@@ -48,7 +48,7 @@ export default function GlobalState({ children }) {
     if (index === -1) {
       copyFavoriteList.push(getCurrentItem);
     } else {
-      copyFavoriteList.splice(index);
+      copyFavoriteList.splice(index, 1);
     }
 
     setFavoritesList(copyFavoriteList);
@@ -64,8 +64,8 @@ export default function GlobalState({ children }) {
         handleSubmit,
         loading,
         recipeList,
-        receipeDetailsData,
-        setReceipeDetailsData,
+        recipeDetailData,
+        setRecipeDetailData,
         handleAddToFavorite,
         favoritesList,
       }}

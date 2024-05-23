@@ -5,8 +5,8 @@ import { GlobalContext } from '../context';
 function DetailsPage() {
   const { id } = useParams();
   const {
-    receipeDetailsData,
-    setReceipeDetailsData,
+    recipeDetailData,
+    setRecipeDetailData,
     handleAddToFavorite,
     favoritesList,
   } = useContext(GlobalContext);
@@ -23,7 +23,7 @@ function DetailsPage() {
       console.log(data);
 
       if (data?.data?.recipe) {
-        setReceipeDetailsData(data?.data?.recipe);
+        setRecipeDetailData(data?.data?.recipe);
       }
     }
 
@@ -35,7 +35,7 @@ function DetailsPage() {
       <div className=' row-start-2 lg:row-start-auto '>
         <div className=' h-96 overflow-hidden rounded-xl group '>
           <img
-            src={receipeDetailsData?.image_url}
+            src={recipeDetailData?.image_url}
             alt=''
             className=' w-full h-full object-cover group-hover:scale-105 duration-300 '
           />
@@ -44,20 +44,20 @@ function DetailsPage() {
       <div className=' flex flex-col gap-3 '>
         <span className=' text-sm text-cyan-700 font-medium '>
           {' '}
-          {receipeDetailsData?.publisher}{' '}
+          {recipeDetailData?.publisher}{' '}
         </span>
         <h3 className=' font-bold text-2xl truncate text-black '>
-          {receipeDetailsData?.title}
+          {recipeDetailData?.title}
         </h3>
         <div>
           <button
-            onClick={() => handleAddToFavorite(receipeDetailsData)}
+            onClick={() => handleAddToFavorite(recipeDetailData)}
             className=' p-3 px-8 rounded-lg text-sm  font-medium capitalize tracking-wider mt-1 inline-block bg-gray-900 text-gray-50 cursor-pointer '
           >
             {favoritesList &&
             favoritesList.length > 0 &&
             favoritesList.findIndex(
-              (item) => item.id === receipeDetailsData?.id
+              (item) => item.id === recipeDetailData?.id
             ) !== -1
               ? 'Remove from favorites'
               : 'Add to favorites'}
@@ -68,7 +68,7 @@ function DetailsPage() {
             Ingredients:
           </span>
           <ul className=' flex flex-col gap-3 list-inside list-disc mt-3 '>
-            {receipeDetailsData?.ingredients.map((ingredient, index) => (
+            {recipeDetailData?.ingredients.map((ingredient, index) => (
               <li key={index}>
                 <span className=' text-lg font-medium text-gray-800 '>
                   {ingredient.quantity} {ingredient.unit}
